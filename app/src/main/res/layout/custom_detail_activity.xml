@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0dp"
+    android:elevation="0dp"
+    android:backgroundTint="@color/color3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/copy"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:drawableTop="@drawable/ic_copy"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="1dp"
+            android:lineSpacingMultiplier="1.1"
+            android:padding="3dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawablePadding="5dp"
+            android:text="@string/copy"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:typeface="monospace" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/save"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:drawableTop="@drawable/ic_save"
+            android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="1dp"
+            android:drawablePadding="5dp"
+            android:lineSpacingMultiplier="1.1"
+            android:padding="3dp"
+            android:text="@string/save"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:typeface="monospace" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/share"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/roboto_medium"
+            android:drawableTop="@drawable/ic_share"
+            android:gravity="center"
+            android:drawablePadding="5dp"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="1dp"
+            android:lineSpacingMultiplier="1.1"
+            android:padding="3dp"
+            android:text="@string/share"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:typeface="monospace" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

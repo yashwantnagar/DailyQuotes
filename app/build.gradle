@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.ynr.dailyquotes'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.ynr.dailyquotes"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -31,9 +32,9 @@ android {
         jvmTarget = '1.8'
     }
 
-//    buildFeatures{
-//        dataBinding = true
-//    }
+    buildFeatures{
+        dataBinding = true
+    }
 
 }
 
@@ -50,5 +51,24 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    implementation "androidx.room:room-runtime:2.4.3"
+    annotationProcessor "androidx.room:room-compiler:2.4.3"
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt "androidx.room:room-compiler:2.4.3"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.0"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0"
 
 }

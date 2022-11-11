@@ -9,12 +9,22 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.lifecycleScope
 import com.ynr.dailyquotes.R
+import com.ynr.dailyquotes.database.Quote
+import com.ynr.dailyquotes.database.QuoteDao
+import com.ynr.dailyquotes.database.QuoteDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class QuotesDetail : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var quotes : String
-    lateinit var author : String
+    private lateinit var quotes : String
+    private lateinit var author : String
+
+    private lateinit var quoteDao: QuoteDao
+
+    private val TAG = "Quote";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +58,63 @@ class QuotesDetail : AppCompatActivity(), View.OnClickListener {
         btnSave.setOnClickListener(this)
         btnShare.setOnClickListener(this)
 
+        quoteDao = QuoteDatabase.getDatabase(this).quoteDao()
+
+        lifecycleScope.launch(Dispatchers.Main){
+
+            getAllQuote()
+
+        }
 
     }
+
+
+    private suspend fun getAllQuote() {
+
+        // Query
+
+        val quoteList = quoteDao.getAllQuotes()
+
+        Log.e(TAG," *****   ${quoteList.size} Quotes there ***** ")
+
+        for(quote in quoteList){
+
+            Log.e(TAG,"id: ${quote.id} name: ${quote.quote} " +
+                    "author: ${quote.author}")
+
+        }
+
+
+        // Update
+
+//        Log.e("MyTAG","*****      Updating a book      **********")
+//        quoteDao.updateQuote(Quote(1,"PHPUpdated","Mike"))
+//
+//        // Query
+//
+//        val books2 = quoteDao.getAllQuotes()
+//        Log.e("MyTAG","*****   ${books2.size} books there *****")
+//        for(book in books2){
+//            Log.e("MyTAG","id: ${book.id} name: ${book.quote} author: ${book.author}")
+//        }
+
+
+        // delete
+
+//        Log.e("MyTAG","*****       Deleting a book      **********")
+//        quoteDao.deleteQuote(Quote(2,"Kotlin","Amelia"))
+//
+//        // Query
+//        val books3 = quoteDao.getAllQuotes()
+//        Log.e(TAG,"*****   ${books3.size} books there *****")
+//
+//        for(book in books3){
+//            Log.e("MyTAG","id: ${book.id} name: ${book.quote} author: ${book.author}")
+//        }
+
+
+    }
+
 
     override fun onClick(v: View?) {
 
@@ -69,7 +134,35 @@ class QuotesDetail : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun saveQuotes() {
+
+        lifecycleScope.launch (Dispatchers.IO){
+
+            // Insert Quote
+
+            Log.e(TAG, " ***** saveQuotes: ***** " )
+
+            quoteDao.insertQuote(Quote(0,quotes,author))
+
+
+            // Query
+
+            val quoteList = quoteDao.getAllQuotes()
+
+            Log.e(TAG," *****   ${quoteList.size} Quotes there ***** ")
+
+            for(quote in quoteList){
+
+                Log.e(TAG,"id: ${quote.id} name: ${quote.quote} " +
+                        "author: ${quote.author}")
+
+            }
+
+        }
+
+
         Toast.makeText(this,"Save",Toast.LENGTH_SHORT).show()
+
+
     }
 
 

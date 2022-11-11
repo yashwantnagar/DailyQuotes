@@ -42,6 +42,8 @@ class ShowQuoteAdapter(
 
         })
 
+
+
     }
 
     override fun getItemCount(): Int {
@@ -59,3 +61,6 @@ class ShowQuoteAdapter(
     }
 
 }
+
+
+

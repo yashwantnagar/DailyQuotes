@@ -90,12 +90,12 @@ class ShowQuotes : AppCompatActivity() {
     }
 
 
-    private fun setQuote(quoteList: MutableList<QuotesModel>) {
+   /* private fun setQuote(quoteList: MutableList<QuotesModel>) {
 
         val showQuoteAdapter = ShowQuoteAdapter(this,quoteList)
         showRV.adapter = showQuoteAdapter
 
-    }
+    }*/
 
     private fun getJSONFromAssets(): String? {
 

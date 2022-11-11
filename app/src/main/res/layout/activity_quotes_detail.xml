@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/color4"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,10 +21,14 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
             app:title="@string/app_name"
-            app:titleTextColor="@color/white"
+            android:theme="@style/OpenSansText"
+            app:titleTextColor="@color/black"
             app:navigationIcon="@drawable/ic_back" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
+    <!-- app:titleTextAppearance="@style/TextAppearance.Toolbar.Title"-->
 
     <com.google.android.material.card.MaterialCardView
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,12 +39,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/cardItem"
         android:layout_gravity="center"
-        android:background="@color/black"
-        android:backgroundTint="@color/color4"
+        android:background="@color/colorGreen"
+        android:backgroundTint="@color/colorGreen"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:elevation="0dp"
-        app:cardElevation="0dp"
+        android:elevation="1dp"
+        app:cardElevation="1dp"
         app:cardCornerRadius="8dp">
 
         <LinearLayout
@@ -62,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/open_sans_semibold"
                 android:gravity="center"
                 android:lineSpacingExtra="1dp"
                 android:lineSpacingMultiplier="1.1"
@@ -78,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/open_sans"
                 android:gravity="end"
                 android:padding="2dp"
                 android:textColor="@color/white"

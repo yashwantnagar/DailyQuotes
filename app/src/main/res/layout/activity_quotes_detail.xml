@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context=".activity.QuotesDetail">
+    tools:context=".ui.activity.QuotesDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -101,6 +101,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <include
+        android:id="@+id/bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         layout="@layout/custom_detail_activity"
         android:layout_width="match_parent"

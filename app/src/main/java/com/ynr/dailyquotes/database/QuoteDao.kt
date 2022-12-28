@@ -1,5 +1,6 @@
 package com.ynr.dailyquotes.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -19,6 +20,6 @@ interface QuoteDao {
     suspend fun updateQuote(quote: Quote)
 
     @Query("select * from quote_table")
-    suspend fun getAllQuotes() : List<Quote>
+    fun getAllQuotes() : LiveData<List<Quote>>
 
 }

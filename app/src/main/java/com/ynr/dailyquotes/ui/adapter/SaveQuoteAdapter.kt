@@ -1,22 +1,23 @@
-package com.ynr.dailyquotes.adapter
+package com.ynr.dailyquotes.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.ynr.dailyquotes.R
-import com.ynr.dailyquotes.activity.SaveActivity
+import com.ynr.dailyquotes.ui.activity.SaveActivity
 import com.ynr.dailyquotes.database.Quote
-import com.ynr.dailyquotes.database.QuoteDbModel
 
 class SaveQuoteAdapter(
 
     private val context: SaveActivity,
-    private val getList: ArrayList<QuoteDbModel>
+    private val getList: List<Quote>
 
     ) : RecyclerView.Adapter<SaveQuoteAdapter.ViewHolder>() {
 
@@ -32,21 +33,45 @@ class SaveQuoteAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 
-        holder.quotes.text = getList[position].quotes
+        holder.quotes.text = getList[position].quote
         holder.author.text = getList[position].author
 
         holder.btnDelete.setOnClickListener {
 
             Log.e("Save", "onBindViewHolder: ${getList[position].id}")
 
-            context.onItemClick(
-                Quote(
-                    getList[position].id,
-                    getList[position].quotes, getList[position].author
-                )
-            )
+            val alertDialog = AlertDialog.Builder(context).create()
 
-            notifyItemChanged(position)
+            val view = LayoutInflater.from(context).inflate(R.layout.custom_dialog,null)
+            val btnOk = view.findViewById<MaterialButton>(R.id.btnOk)
+            val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancel)
+            alertDialog.setView(view)
+
+            alertDialog.setCanceledOnTouchOutside(false)
+
+            btnOk.setOnClickListener{
+
+                context.onItemClick(
+                    Quote(
+                        getList[position].id,
+                        getList[position].quote,
+                        getList[position].author
+                    )
+                )
+
+                notifyItemChanged(position)
+
+                alertDialog.dismiss()
+
+            }
+
+            btnCancel.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            alertDialog.show()
+
+
 
         }
     }

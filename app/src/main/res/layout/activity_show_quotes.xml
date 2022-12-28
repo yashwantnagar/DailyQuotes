@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activity.ShowQuotes">
+    tools:context=".ui.activity.ShowQuotes">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/custom_toolbar" />
+        <include android:id="@+id/toolbar"
+            layout="@layout/custom_toolbar" />
 
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -1,4 +1,4 @@
-package com.ynr.dailyquotes.adapter
+package com.ynr.dailyquotes.ui.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.ynr.dailyquotes.R
-import com.ynr.dailyquotes.activity.QuotesDetail
+import com.ynr.dailyquotes.ui.activity.QuotesDetail
 import com.ynr.dailyquotes.util.QuotesModel
 
 class ShowQuoteAdapter(
@@ -23,7 +23,7 @@ class ShowQuoteAdapter(
 
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.show_quotes_item,parent,false)
-        return ShowQuoteAdapter.ViewHolder(view)
+        return ViewHolder(view)
 
     }
 
@@ -35,7 +35,7 @@ class ShowQuoteAdapter(
 
         holder.cardItem.setOnClickListener(View.OnClickListener {
 
-            val intent = Intent(context,QuotesDetail::class.java)
+            val intent = Intent(context, QuotesDetail::class.java)
             intent.putExtra("quotes",quoteList[position].quotes)
             intent.putExtra("author",quoteList[position].author)
             context.startActivity(intent)

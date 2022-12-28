@@ -5,11 +5,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardItem"
-    android:background="@color/colorGreen"
-    android:backgroundTint="@color/colorGreen"
-    android:layout_marginTop="12dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
+    android:background="@color/light_green"
+    android:backgroundTint="@color/light_green"
+    android:layout_marginTop="15dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:elevation="1dp"
     app:cardElevation="1dp"
     app:cardCornerRadius="8dp">
@@ -24,9 +24,10 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnDelete"
-            android:src="@drawable/ic_favorite"
+            android:src="@drawable/ic_delete"
             app:layout_constraintEnd_toEndOf="parent"
             android:padding="2dp"
+            android:tint="@color/black"
             android:background="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/quotes"
@@ -41,14 +42,13 @@
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans_semibold"
             android:gravity="center"
+            android:layout_marginTop="5dp"
             android:lineSpacingExtra="1dp"
             android:lineSpacingMultiplier="1.1"
             android:padding="8dp"
             android:text="@string/quotes"
             android:textSize="18sp"
-            android:textColor="@color/white"
-            android:textStyle="italic"
-            android:typeface="monospace" />
+            android:textColor="@color/black"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/author"
@@ -58,14 +58,14 @@
             android:layout_gravity="center"
             android:fontFamily="@font/open_sans"
             android:gravity="end"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:lineSpacingExtra="1dp"
             android:lineSpacingMultiplier="1.1"
             android:padding="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/author"
-            android:textSize="15sp"
-            android:textStyle="italic"
-            android:typeface="monospace" />
+            android:textSize="13sp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,13 +12,11 @@ import com.ynr.dailyquotes.R
 import com.ynr.dailyquotes.activity.SaveActivity
 import com.ynr.dailyquotes.database.Quote
 import com.ynr.dailyquotes.database.QuoteDbModel
-import com.ynr.dailyquotes.util.DeleteQuote
 
 class SaveQuoteAdapter(
 
     private val context: SaveActivity,
-    private val getList: ArrayList<QuoteDbModel>,
-    private val deleteQuote: DeleteQuote
+    private val getList: ArrayList<QuoteDbModel>
 
     ) : RecyclerView.Adapter<SaveQuoteAdapter.ViewHolder>() {
 
@@ -27,7 +25,7 @@ class SaveQuoteAdapter(
 
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.save_quotes_item,parent,false)
-        return SaveQuoteAdapter.ViewHolder(view)
+        return ViewHolder(view)
 
     }
 
@@ -35,42 +33,32 @@ class SaveQuoteAdapter(
 
 
         holder.quotes.text = getList[position].quotes
-        holder.author.setText(getList.get(position).author)
+        holder.author.text = getList[position].author
 
-        holder.btnDelete.setOnClickListener(View.OnClickListener {
+        holder.btnDelete.setOnClickListener {
 
-            Log.e("Save", "onBindViewHolder: ${getList[position].id}" )
+            Log.e("Save", "onBindViewHolder: ${getList[position].id}")
 
-            deleteQuote.quote(Quote(
-                getList[position].id,
-                getList[position].quotes
-                ,getList[position].author
-            ))
+            context.onItemClick(
+                Quote(
+                    getList[position].id,
+                    getList[position].quotes, getList[position].author
+                )
+            )
 
             notifyItemChanged(position)
 
-        })
-
-//        holder.cardItem.setOnClickListener(View.OnClickListener {
-//
-//            val intent = Intent(context,QuotesDetail::class.java)
-//            intent.putExtra("quotes",quoteList[position].quotes)
-//            intent.putExtra("author",quoteList[position].author)
-//            context.startActivity(intent)
-//
-//        })
-
+        }
     }
 
-    override fun getItemCount() : Int {
 
-//        return quoteList.size
+    override fun getItemCount() : Int {
 
         return getList.size
 
     }
 
-    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val cardItem : MaterialCardView = itemView.findViewById(R.id.cardItem)
         val quotes : TextView = itemView.findViewById(R.id.quotes)

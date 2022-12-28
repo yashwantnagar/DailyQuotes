@@ -1,6 +1,9 @@
 package com.ynr.dailyquotes.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -129,8 +132,17 @@ class QuotesDetail : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun copyQuotes() {
+
         Log.e("Quotes", "copyQuotes: $quotes" )
-//        Toast.makeText(this,"Copy",Toast.LENGTH_SHORT).show()
+
+        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        // When setting the clip board text.
+        clipboardManager.setPrimaryClip(ClipData.newPlainText("", quotes))
+        // Only show a toast for Android 12 and lower.
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
+            Toast.makeText(this,"Copied",Toast.LENGTH_SHORT).show()
+
     }
 
     private fun saveQuotes() {

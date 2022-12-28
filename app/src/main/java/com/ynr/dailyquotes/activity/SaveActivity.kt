@@ -3,8 +3,10 @@ package com.ynr.dailyquotes.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,22 +16,19 @@ import com.ynr.dailyquotes.database.Quote
 import com.ynr.dailyquotes.database.QuoteDao
 import com.ynr.dailyquotes.database.QuoteDatabase
 import com.ynr.dailyquotes.database.QuoteDbModel
-import com.ynr.dailyquotes.util.DeleteQuote
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SaveActivity : AppCompatActivity(), DeleteQuote {
+class SaveActivity : AppCompatActivity() {
 
-    private lateinit var toolbar: AppCompatTextView
+    private lateinit var toolbar: Toolbar
     private lateinit var saveRV : RecyclerView
-    private lateinit var btnBack : AppCompatImageButton
 
-    private lateinit var quoteDao: QuoteDao
-
-    private lateinit var deleteQuote : DeleteQuote
+    private lateinit var quoteDao : QuoteDao
 
     val TAG = "Save"
 
+    private lateinit var saveQuoteAdapter : SaveQuoteAdapter
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,28 +36,25 @@ class SaveActivity : AppCompatActivity(), DeleteQuote {
 
         toolbar  = findViewById(R.id.toolbar)
         saveRV  = findViewById(R.id.saveRV)
-        btnBack  = findViewById(R.id.btnBack)
-
 
         saveRV.layoutManager = LinearLayoutManager(this)
 
 
         quoteDao = QuoteDatabase.getDatabase(this).quoteDao()
 
-//        val quoteAllList : ArrayList<QuoteDbModel> = mutableListOf()
-
         val quoteAllList  = ArrayList<QuoteDbModel>()
 
         val getList : ArrayList<QuoteDbModel> = getAllQuote(quoteAllList)
 
-        deleteQuote = this
-
-        val saveQuoteAdapter = SaveQuoteAdapter(this,getList,deleteQuote)
+        saveQuoteAdapter = SaveQuoteAdapter(this,getList)
         saveRV.adapter = saveQuoteAdapter
 
 
-//        val saveQuoteAdapter = SaveQuoteAdapter(this)
-//        saveRV.adapter = saveQuoteAdapter
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setOnClickListener {
+            onBackPressedDispatcher
+        }
 
     }
 
@@ -91,16 +87,17 @@ class SaveActivity : AppCompatActivity(), DeleteQuote {
 
     }
 
-    override fun quote( quote : Quote) {
 
-        Log.e(TAG, "quote: ${quote.id}" )
+    fun onItemClick(quote : Quote){
 
-        lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch(Dispatchers.IO){
 
             quoteDao.deleteQuote(Quote(quote.id,quote.quote,quote.author))
 
         }
 
+        saveQuoteAdapter.notifyDataSetChanged()
+        Toast.makeText(applicationContext,"Item Deleted",Toast.LENGTH_SHORT).show()
     }
 
 

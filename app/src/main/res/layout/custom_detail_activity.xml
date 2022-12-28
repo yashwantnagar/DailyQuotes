@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="0dp"
     android:elevation="0dp"
-    android:backgroundTint="@color/colorGreen"
+    android:backgroundTint="@color/light_green"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -26,15 +26,14 @@
             android:fontFamily="@font/open_sans_semibold"
             android:drawableTop="@drawable/ic_copy"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:lineSpacingExtra="1dp"
-            android:lineSpacingMultiplier="1.1"
             android:padding="3dp"
             android:background="?android:attr/selectableItemBackground"
             android:drawablePadding="5dp"
             android:text="@string/copy"
+            app:drawableTint="@color/black"
             android:textSize="16sp"
-            android:textStyle="italic"
             android:typeface="monospace" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -48,16 +47,14 @@
             android:fontFamily="@font/open_sans_semibold"
             android:drawableTop="@drawable/ic_save"
             android:gravity="center"
+            app:drawableTint="@color/black"
             android:background="?android:attr/selectableItemBackground"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:lineSpacingExtra="1dp"
             android:drawablePadding="5dp"
-            android:lineSpacingMultiplier="1.1"
             android:padding="3dp"
             android:text="@string/save"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            android:typeface="monospace" />
+            android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/share"
@@ -72,14 +69,11 @@
             android:drawableTop="@drawable/ic_share"
             android:gravity="center"
             android:drawablePadding="5dp"
-            android:textColor="@color/white"
-            android:lineSpacingExtra="1dp"
-            android:lineSpacingMultiplier="1.1"
+            android:textColor="@color/black"
             android:padding="3dp"
             android:text="@string/share"
             android:textSize="16sp"
-            android:textStyle="italic"
-            android:typeface="monospace" />
+            app:drawableTint="@color/black" />
 
     </LinearLayout>
 

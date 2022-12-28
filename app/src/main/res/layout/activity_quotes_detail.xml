@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white"
+        android:background="@color/light_green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -39,8 +39,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/cardItem"
         android:layout_gravity="center"
-        android:background="@color/colorGreen"
-        android:backgroundTint="@color/colorGreen"
+        android:background="@color/light_green"
+        android:backgroundTint="@color/light_green"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:elevation="1dp"
@@ -58,6 +58,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/image"
                 android:src="@drawable/ic_quote"
+                android:tint="@color/black"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -73,8 +75,8 @@
                 android:text="@string/quotes"
                 android:textSize="20sp"
                 android:padding="5dp"
-                android:textColor="@color/white"
-                android:textStyle="italic"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
                 android:typeface="monospace" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -85,12 +87,13 @@
                 android:fontFamily="@font/open_sans"
                 android:gravity="end"
                 android:padding="2dp"
-                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="1dp"
                 android:lineSpacingMultiplier="1.1"
                 android:text="@string/author"
                 android:textSize="14sp"
-                android:textStyle="italic"
                 android:typeface="monospace" />
 
         </LinearLayout>

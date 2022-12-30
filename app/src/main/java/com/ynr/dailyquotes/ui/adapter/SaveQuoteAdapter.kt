@@ -1,5 +1,6 @@
 package com.ynr.dailyquotes.ui.adapter
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -70,10 +71,21 @@ class SaveQuoteAdapter(
             }
 
             alertDialog.show()
+        }
 
+        holder.btnShare.setOnClickListener {
 
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, getList[position].quote)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            context.startActivity(shareIntent)
 
         }
+
     }
 
 
@@ -89,6 +101,7 @@ class SaveQuoteAdapter(
         val quotes : TextView = itemView.findViewById(R.id.quotes)
         val author : TextView = itemView.findViewById(R.id.author)
         val btnDelete : AppCompatImageButton = itemView.findViewById(R.id.btnDelete)
+        val btnShare : AppCompatImageButton = itemView.findViewById(R.id.btnShare)
 
     }
 

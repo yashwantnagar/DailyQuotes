@@ -5,14 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/light_green"
     tools:context=".ui.activity.SplashActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:src="@drawable/logo"
+        android:id="@+id/img"
+        android:src="@drawable/ic_quote"
+        app:tint="@color/black"
+        android:tint="@color/black"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.45"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        app:layout_constraintTop_toBottomOf="@+id/img"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        android:fontFamily="@font/open_sans_semibold"
+        android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

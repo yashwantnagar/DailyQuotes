@@ -59,11 +59,8 @@ class SaveActivity : AppCompatActivity() {
 
         }
 
-
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.setOnClickListener {
-            onBackPressedDispatcher
+            onBackPressedDispatcher.onBackPressed()
         }
 
     }

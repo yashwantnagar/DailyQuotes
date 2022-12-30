@@ -44,10 +44,6 @@ class QuotesDetail : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
 
-//        setSupportActionBar(binding.toolbar)
-//        val actionBar: ActionBar? = supportActionBar
-//        actionBar?.setDisplayHomeAsUpEnabled(true)
-
         quotes = intent.getStringExtra("quotes").toString()
         author = intent.getStringExtra("author").toString()
 
@@ -64,6 +60,8 @@ class QuotesDetail : AppCompatActivity(), View.OnClickListener {
         binding.bottom.copy.setOnClickListener(this)
         binding.bottom.save.setOnClickListener(this)
         binding.bottom.share.setOnClickListener(this)
+        binding.toolbar.setOnClickListener(this)
+
 
     }
 
@@ -75,6 +73,7 @@ class QuotesDetail : AppCompatActivity(), View.OnClickListener {
           R.id.copy -> copyQuotes()
           R.id.save -> saveQuotes()
           R.id.share -> shareQuotes()
+          R.id.toolbar -> onBackPressedDispatcher.onBackPressed()
 
         }
 
